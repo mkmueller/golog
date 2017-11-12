@@ -76,6 +76,7 @@ func New (v ...interface{}) *Logger {
 		switch v[0].(type) {
 			case string:
 				l.Filename = v[0].(string)
+				l.flag = LstdFlags
 				l.openFile()
 				l.closeFile()
 			case *os.File:
