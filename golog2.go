@@ -43,16 +43,11 @@ However, you may also call it using no arguments at all in which case the
 default output will be stderr, no prefix, and the flag set to 0. Being a
 variadic function, New will allow one, two, three or four arguments. The first
 argument may be a string filename or an io.Writer like *os.File or
-*bytes.Buffer.  An optional fourth argument will set the logging level for the
-Printf method.
+*bytes.Buffer. An optional fourth argument will set the logging level for the
+Printf method. When a filename is passed as the first argument, the flags will
+automatically be set to Ldate | Ltime.
 
 The following argument combinations may be used with the New method:
-
-  file   := "logfile.log"
-  out    := os.Stdout
-  prefix := "PREFIX "
-  flags  := golog.LstdFlags|golog.LUTC
-  level  := 2
 
   golog.New()
   golog.New(flags)
@@ -62,6 +57,7 @@ The following argument combinations may be used with the New method:
   golog.New(file, flags)
   golog.New(file, prefix, flags)
   golog.New(file, prefix, flags, level)
+
 */
 func New (v ...interface{}) *Logger {
 	l 			:= new(Logger)
