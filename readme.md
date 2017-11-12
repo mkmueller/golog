@@ -61,7 +61,7 @@ accepts a logging level parameter.
 * [New](#example_New)
 
 #### <a name="pkg-files">Package files</a>
-[golog.go](/src/github.com/mkmueller/golog/golog.go) [golog2.go](/src/github.com/mkmueller/golog/golog2.go) 
+[golog.go](/src/github.com/mkmueller/golog/golog.go) [golog2.go](/src/github.com/mkmueller/golog/golog2.go)
 
 
 ## <a name="pkg-constants">Constants</a>
@@ -247,17 +247,11 @@ default output will be stderr, no prefix, and the flag set to 0. Being a
 variadic function, New will allow one, two, three or four arguments. The first
 argument may be a string filename or an io.Writer like *os.File or
 *bytes.Buffer.  An optional fourth argument will set the logging level for the
-Printf method.
+Printf method. When a filename is passed as the first argument, the flags will
+automatically be set to Ldate | Ltime.
 
 The following argument combinations may be used with the New method:
 
-
-	file   := "logfile.log"
-	out    := os.Stdout
-	prefix := "PREFIX "
-	flags  := golog.LstdFlags|golog.LUTC
-	level  := 2
-	
 	golog.New()
 	golog.New(flags)
 	golog.New(flags, prefix)
